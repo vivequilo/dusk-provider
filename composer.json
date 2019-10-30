@@ -1,0 +1,26 @@
+{
+    "name": "quilo/dusk",
+    "description": "Dusk extensions for testing",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Augusto Alonso",
+            "email": "augustoalonso98@gmail.comn"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Quilo\\Dusk\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Quilo\\Dusk\\QuiloTestsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
