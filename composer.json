@@ -1,5 +1,5 @@
 {
-    "name": "quilo/dusk",
+    "name": "vivequilo/dusk-provider",
     "description": "Dusk extensions for testing",
     "type": "library",
     "license": "MIT",
