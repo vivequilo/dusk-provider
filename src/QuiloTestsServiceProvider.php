@@ -182,7 +182,7 @@ class QuiloTestsServiceProvider extends ServiceProvider {
 						$values = collect($input["value"]["values"]);
 						if ($input["v-select-type"] === "models") {
 							if ($values->isEmpty()) {
-								$this->checkVSelectIsEmpty('#' . $input["id"]);
+								$this->checkVSelectIsEmpty('#' . $input["id"], $input);
 							} else {
 								$this->checkVSelectHasOptions('#' . $input["id"], $values);
 							}
