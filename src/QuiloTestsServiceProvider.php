@@ -178,6 +178,10 @@ class QuiloTestsServiceProvider extends ServiceProvider {
 						//When selector is a date
 						$this->insertDate($input);
 						break;
+					case 'checkbox':
+						//When selector is a date
+						$this->check($input["selector"]);
+						break;
 					case 'v-select':
 						$values = collect($input["value"]["values"]);
 						if ($input["v-select-type"] === "models") {
