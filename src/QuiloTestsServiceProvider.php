@@ -139,7 +139,6 @@ class QuiloTestsServiceProvider extends ServiceProvider {
 			$collection = gettype($values) === 'array' ? collect($values) : $values;
 			$collection->map(function ($value, $key) {
 				if ($key !== '' || is_int($key)) {
-					$this->scrollToElement('#' . $key);
 					$this->assertSeeIn('#' . $key, $value);
 				} else {
 					$this->assertSee($value);
