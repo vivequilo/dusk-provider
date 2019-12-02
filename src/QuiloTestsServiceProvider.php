@@ -30,6 +30,8 @@ class QuiloTestsServiceProvider extends ServiceProvider {
 			if ($type == 'id') {
 				$element = str_replace('#', '', $element);
 				$this->script("document.getElementById('$element').scrollIntoView();");
+			}else{
+				$this->script("document.getElementsByName('$element')[0].scrollIntoView();");
 			}
 
 			return $this;
@@ -137,6 +139,7 @@ class QuiloTestsServiceProvider extends ServiceProvider {
 			$collection = gettype($values) === 'array' ? collect($values) : $values;
 			$collection->map(function ($value, $key) {
 				if ($key !== '' || is_int($key)) {
+					$this->scrollToElement('#' . $key);
 					$this->assertSeeIn('#' . $key, $value);
 				} else {
 					$this->assertSee($value);
