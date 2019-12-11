@@ -1,0 +1,17 @@
+<?php
+
+namespace DummyNamespace;
+
+use Tests\Browser\Helpers\InputsHelper;
+
+class DummyClass extends InputsHelper
+{
+    // Constant Class
+    const DUMMY_CONST = "";
+    const DUMMY_ARRAY = [];
+
+    public static function returnArray($model){
+    	return [];
+    }
+}
+

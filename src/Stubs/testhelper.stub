@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+class DummyClass
+{
+    const ARRAY_DUMMY = [];
+    const VARIABLE = "";
+    public static function dummy($dummy)
+    {
+
+    }
+}

@@ -1,0 +1,42 @@
+<?php
+
+namespace DummyNamespace;
+
+use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\Traits\DatabaseAssertions;
+use App\Models\Division;
+use App\Models\InsuredBusiness;
+use App\Models\InsuredPayrollRecord;
+use App\Models\Tag;
+use App\Models\User;
+
+class DummyClass extends DuskTestCase
+{
+    private $user, $business, $insuredBusinesses, $tags;
+    use DatabaseAssertions;
+    /**
+     * A Dusk test example.
+     *
+     * @return void
+     */
+
+    public function setUp(): void{
+        parent::setUp();
+        $this->user     = factory(User::class)->states('business')->create();
+        $this->business = $this->user->userRole->pluck('business')->first();
+        $this->tags           = factory(Tag::class)->create(["business_id" => $this->business->id]);
+        $this->business->divisions()->saveMany(factory(Division::class, rand(5, 10))->create(["business_id" => $this->business->id]));
+        $this->insuredBusinesses = factory(InsuredBusiness::class)->states('hire', 'many-absences', 'many-overtimes', 'random-boss', 'tags', "bank-account", "payroll-configuration")->create(["business_id" => $this->business->id]);
+
+
+        // );
+    }
+    public function testExample()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->myLogin($this->user, $this->business);
+        });
+    }
+}

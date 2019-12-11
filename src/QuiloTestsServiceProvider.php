@@ -30,7 +30,7 @@ class QuiloTestsServiceProvider extends ServiceProvider {
 			if ($type == 'id') {
 				$element = str_replace('#', '', $element);
 				$this->script("document.getElementById('$element').scrollIntoView();");
-			}else{
+			} else {
 				$this->script("document.getElementsByName('$element')[0].scrollIntoView();");
 			}
 
@@ -41,9 +41,8 @@ class QuiloTestsServiceProvider extends ServiceProvider {
 			$userArray   = UserConstantsDusk::returnUserArray($user);
 			$this
 				->visit('/logout')
-				->visit(new Login)
-				->successfulLogin($userArray)
-				->on(new SelectBusiness)
+				->loginAs($this->user->id)
+				->visit(new SelectBusiness)
 				->chooseBusiness($business, $newBusiness)
 				->on(new DirectoryGeneral)
 				->waitForThisLocation()
